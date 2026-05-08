@@ -124,6 +124,36 @@ def read_root():
 
 ---
 
+---
+
+# Python script to read a CSV file with timeStamp
+```python
+
+
+import csv
+import time
+
+start_time = time.time()
+
+with open("data.csv", "r") as file:
+    reader = csv.reader(file)
+    rows = list(reader)
+
+end_time = time.time()
+
+total_time = end_time - start_time
+
+print(f"Total rows read: {len(rows)}")
+print(f"CSV read time: {total_time:.4f} seconds")
+
+* Decorators
+* Generators
+* Async/Await
+* List Comprehensions
+* Context Managers
+
+---
+
 # 🚨 🔟 Common Mistakes
 
 * Mutable default arguments
