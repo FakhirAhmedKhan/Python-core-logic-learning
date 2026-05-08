@@ -145,6 +145,8 @@ total_time = end_time - start_time
 
 print(f"Total rows read: {len(rows)}")
 print(f"CSV read time: {total_time:.4f} seconds")
+---
+```
 
 * Decorators
 * Generators
@@ -152,7 +154,6 @@ print(f"CSV read time: {total_time:.4f} seconds")
 * List Comprehensions
 * Context Managers
 
----
 
 # 🚨 🔟 Common Mistakes
 
@@ -160,16 +161,11 @@ print(f"CSV read time: {total_time:.4f} seconds")
 * Not using virtual environments
 * Not handling exceptions
 
----
 
 # 🏁 Summary
 
 Python is:
 
-```
 Readable + Powerful + Flexible + Beginner Friendly + Production Ready
-```
----
----
 
 Just tell me which direction you want next 😊
