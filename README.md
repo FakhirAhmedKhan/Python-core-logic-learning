@@ -1,6 +1,6 @@
 ---
 
-# 📘 3️⃣ Python Core Logic – Deep Learning Resource
+# 📘 3️⃣ Python Core Logic – Learning Resource
 
 ---
 
