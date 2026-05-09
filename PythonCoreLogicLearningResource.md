@@ -10,6 +10,50 @@
 
 ---
 
+# 🎯 Day 1 – Practical Projects & Core Concepts
+
+## Projects Built:
+
+### 1️⃣ **To-Do List App** (`ToDoListApp.py`)
+A task management system that demonstrates:
+- **File I/O**: Reading/writing CSV files
+- **Data Structures**: Lists & Dictionaries
+- **Functions**: `load_tasks()`, `save_tasks()`, `add_task()`
+- **Error Handling**: Try-except blocks
+- **Persistence**: Save tasks between sessions
+
+### 2️⃣ **Contact Book** (`ContactBook.py`)
+A contact management system covering:
+- **CSV Operations**: DictReader & DictWriter
+- **Dictionary Data Structure**: Nested dicts for contact info
+- **CRUD Operations**: Add, View, Delete, Edit contacts
+- **File Validation**: Check if file exists before loading
+
+### 3️⃣ **CSV Data Analysis Projects**
+- **CSVReaderProject.py**: Read & process CSV data
+- **CSVStudentResultAnalyzer.py**: Parse student records
+- **StudentResultCalculator.py**: Calculate stats from CSV
+
+### 4️⃣ **Beginner Games & Utilities**
+- **NumberGuessingGame.py**: Control flow & user input
+- **SimpleLoginSystem.py**: Basic authentication logic
+- **ExpenseTracker.py**: Track & manage expenses
+
+## Day 1 Key Learnings:
+
+| Concept | What We Learn |
+|---------|--------------|
+| **File Handling** | Open, read, write CSV files |
+| **Data Structures** | Lists, Dicts, nested data |
+| **Functions** | Organize code into reusable blocks |
+| **CSV Module** | DictReader, DictWriter, fieldnames |
+| **Error Handling** | Try-except to handle file errors |
+| **User Input** | `input()` for interactive programs |
+| **Conditionals** | If-else logic for decision making |
+| **Loops** | For loops to iterate through data |
+
+---
+
 ## 📌 What is Python?
 
 Python is:
