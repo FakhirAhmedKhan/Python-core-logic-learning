@@ -4,197 +4,208 @@
 
 import numpy as np
 
+# Create a NumPy array of student marks
 marks = np.array([70, 80, 90, 60])
+# Create a regular Python list of student marks
+SimplePython = ([70, 80, 90, 60])
 
-print(marks)
-
-# Output:[70 80 90 60]
-
-## 2. Array indexing
-
-
-marks = np.array([70, 80, 90, 60])
-
-print(marks[0])  # first value
-print(marks[2])  # third value
-
-# Output:
-
-# ```text
-# 70
-# 90
-# ```
-
-## 3. Array slicing
+print(marks) # Output: [70 80 90 60]
+print(np.mean(marks)) # Output: 75.0
+print(np.max(marks)) # Output: 90
+print(np.min(marks)) # Output: 60
+print(np.argmax(marks)) # Output: 2 (index of the highest mark)
+print(np.argmin(marks)) # Output: 3 (index of the lowest mark)
+print(marks[0]) # Output: 70
+print(marks[1:3]) # Output: [80 90]
+print(SimplePython) # Output: [70, 80, 90, 60]
 
 
-marks = np.array([70, 80, 90, 60, 50])
 
-print(marks[1:4])
-# ```
-
-# Output:
-
-# ```text
-# [80 90 60]
-# ```
-
-## 4. sum(), mean(), max(), min()
+# ## 2. Array indexing
 
 
-loan_amounts = np.array([5000, 7000, 3000, 9000])
+# marks = np.array([70, 80, 90, 60])
 
-print(np.sum(loan_amounts))
-print(np.mean(loan_amounts))
-print(np.max(loan_amounts))
-print(np.min(loan_amounts))
-# ```
+# print(marks[0])  # first value
+# print(marks[2])  # third value
 
-# Output:
+# # Output:
 
-# ```text
-# 24000
-# 6000.0
-# 9000
-# 3000
-# ```
+# # ```text
+# # 70
+# # 90
+# # ```
 
-## 5. argmax()
+# ## 3. Array slicing
 
-loan_amounts = np.array([5000, 7000, 3000, 9000])
 
-highest_index = np.argmax(loan_amounts)
+# marks = np.array([70, 80, 90, 60, 50])
 
-print(highest_index)
-print(loan_amounts[highest_index])
-# ```
+# print(marks[1:4])
+# # ```
 
-# Output:
+# # Output:
 
-# ```text
-# 3
-# 9000
-# ```
+# # ```text
+# # [80 90 60]
+# # ```
 
-## 6. axis=0 and axis=1
+# ## 4. sum(), mean(), max(), min()
 
-data = np.array([
-    [5000, 5, 12],
-    [7000, 6, 24],
-    [3000, 4, 10]
-])
 
-print(np.sum(data, axis=0))  # column-wise sum
-print(np.sum(data, axis=1))  # row-wise sum
+# loan_amounts = np.array([5000, 7000, 3000, 9000])
 
-# Output:
+# print(np.sum(loan_amounts))
+# print(np.mean(loan_amounts))
+# print(np.max(loan_amounts))
+# print(np.min(loan_amounts))
+# # ```
 
-# ```text
-# [15000    15    46]
-# [5017 7030 3014]
+# # Output:
 
-# Meaning:
+# # ```text
+# # 24000
+# # 6000.0
+# # 9000
+# # 3000
+# # ```
 
-# ```text
-# axis=0 = columns
-# axis=1 = rows
-# ```
+# ## 5. argmax()
 
-## 7. Rows and columns
+# loan_amounts = np.array([5000, 7000, 3000, 9000])
 
-data = np.array([
-    [5000, 5, 12],
-    [7000, 6, 24],
-    [3000, 4, 10]
-])
+# highest_index = np.argmax(loan_amounts)
 
-print(data[0])      # first row
-print(data[:, 0])   # first column
-# ```
+# print(highest_index)
+# print(loan_amounts[highest_index])
+# # ```
 
-# Output:
+# # Output:
 
-# ```text
-# [5000    5   12]
-# [5000 7000 3000]
-# ```
+# # ```text
+# # 3
+# # 9000
+# # ```
 
-## 8. Basic data simplification
+# ## 6. axis=0 and axis=1
 
-loan_amounts = np.array([5000, 7000, 3000, 9000])
+# data = np.array([
+#     [5000, 5, 12],
+#     [7000, 6, 24],
+#     [3000, 4, 10]
+# ])
 
-simple_amounts = loan_amounts / 1000
+# print(np.sum(data, axis=0))  # column-wise sum
+# print(np.sum(data, axis=1))  # row-wise sum
 
-print(simple_amounts)
-# ```
+# # Output:
 
-# Output:
+# # ```text
+# # [15000    15    46]
+# # [5017 7030 3014]
 
-# ```text
-# [5. 7. 3. 9.]
-# ```
+# # Meaning:
 
-# Meaning:
+# # ```text
+# # axis=0 = columns
+# # axis=1 = rows
+# # ```
 
-# ```text
-# 5000 becomes 5k
-# 7000 becomes 7k
-# ```
+# ## 7. Rows and columns
 
-## 9. Moving cleaned data into a new file
-data = [
-    ["Student", "Loan Amount"],
-    ["Ali", 5000],
-    ["Ahmed", 7000],
-    ["Sara", 3000]
-]
+# data = np.array([
+#     [5000, 5, 12],
+#     [7000, 6, 24],
+#     [3000, 4, 10]
+# ])
 
-with open("student_loan_cleaned.csv", "w") as file:
-    for row in data:
-        file.write(f"{row[0]},{row[1]}\n")
+# print(data[0])      # first row
+# print(data[:, 0])   # first column
+# # ```
 
-print("File created successfully")
+# # Output:
 
-## 10. Real dataset handling
+# # ```text
+# # [5000    5   12]
+# # [5000 7000 3000]
+# # ```
 
-loan_amounts = np.array([5000, 7000, 3000, 9000, 6000])
+# ## 8. Basic data simplification
 
-total_loan = np.sum(loan_amounts)
-average_loan = np.mean(loan_amounts)
-highest_loan = np.max(loan_amounts)
-lowest_loan = np.min(loan_amounts)
+# loan_amounts = np.array([5000, 7000, 3000, 9000])
 
-print("Total Loan:", total_loan)
-print("Average Loan:", average_loan)
-print("Highest Loan:", highest_loan)
-print("Lowest Loan:", lowest_loan)
-# ```
+# simple_amounts = loan_amounts / 1000
 
-# Output:
+# print(simple_amounts)
+# # ```
 
-# ```text
-# Total Loan: 30000
-# Average Loan: 6000.0
-# Highest Loan: 9000
-# Lowest Loan: 3000
-# ```
+# # Output:
 
-## Simple combined example
+# # ```text
+# # [5. 7. 3. 9.]
+# # ```
 
-# Student loan data
-# Columns: loan_amount, interest_rate, loan_term_months
-student_loans = np.array([
-    [5000, 5, 12],
-    [7000, 6, 24],
-    [3000, 4, 10],
-    [9000, 7, 36]
-])
+# # Meaning:
 
-loan_amounts = student_loans[:, 0]
+# # ```text
+# # 5000 becomes 5k
+# # 7000 becomes 7k
+# # ```
 
-print("Loan Amounts:", loan_amounts)
-print("Total Loan:", np.sum(loan_amounts))
-print("Average Loan:", np.mean(loan_amounts))
-print("Highest Loan:", np.max(loan_amounts))
-print("Lowest Loan:", np.min(loan_amounts))
-print("Highest Loan Index:", np.argmax(loan_amounts))
+# ## 9. Moving cleaned data into a new file
+# data = [
+#     ["Student", "Loan Amount"],
+#     ["Ali", 5000],
+#     ["Ahmed", 7000],
+#     ["Sara", 3000]
+# ]
+
+# with open("student_loan_cleaned.csv", "w") as file:
+#     for row in data:
+#         file.write(f"{row[0]},{row[1]}\n")
+
+# print("File created successfully")
+
+# ## 10. Real dataset handling
+
+# loan_amounts = np.array([5000, 7000, 3000, 9000, 6000])
+
+# total_loan = np.sum(loan_amounts)
+# average_loan = np.mean(loan_amounts)
+# highest_loan = np.max(loan_amounts)
+# lowest_loan = np.min(loan_amounts)
+
+# print("Total Loan:", total_loan)
+# print("Average Loan:", average_loan)
+# print("Highest Loan:", highest_loan)
+# print("Lowest Loan:", lowest_loan)
+# # ```
+
+# # Output:
+
+# # ```text
+# # Total Loan: 30000
+# # Average Loan: 6000.0
+# # Highest Loan: 9000
+# # Lowest Loan: 3000
+# # ```
+
+# ## Simple combined example
+
+# # Student loan data
+# # Columns: loan_amount, interest_rate, loan_term_months
+# student_loans = np.array([
+#     [5000, 5, 12],
+#     [7000, 6, 24],
+#     [3000, 4, 10],
+#     [9000, 7, 36]
+# ])
+
+# loan_amounts = student_loans[:, 0]
+
+# print("Loan Amounts:", loan_amounts)
+# print("Total Loan:", np.sum(loan_amounts))
+# print("Average Loan:", np.mean(loan_amounts))
+# print("Highest Loan:", np.max(loan_amounts))
+# print("Lowest Loan:", np.min(loan_amounts))
+# print("Highest Loan Index:", np.argmax(loan_amounts))
