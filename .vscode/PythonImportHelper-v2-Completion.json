@@ -1,0 +1,585 @@
+[
+    {
+        "label": "print_function",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "csv",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "csv",
+        "description": "csv",
+        "detail": "csv",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "cmd_doc",
+        "kind": 5,
+        "importPath": ".venv.Scripts.runxlrd",
+        "description": ".venv.Scripts.runxlrd",
+        "peekOfCode": "cmd_doc = \"\"\"\nCommands:\n2rows           Print the contents of first and last row in each sheet\n3rows           Print the contents of first, second and last row in each sheet\nbench           Same as \"show\", but doesn't print -- for profiling\nbiff_count[1]   Print a count of each type of BIFF record in the file\nbiff_dump[1]    Print a dump (char and hex) of the BIFF records in the file\nfonts           hdr + print a dump of all font objects\nhdr             Mini-overview of file (no per-sheet information)\nhotshot         Do a hotshot profile run e.g. ... -f1 hotshot bench bigfile*.xls",
+        "detail": ".venv.Scripts.runxlrd",
+        "documentation": {}
+    },
+    {
+        "label": "options",
+        "kind": 5,
+        "importPath": ".venv.Scripts.runxlrd",
+        "description": ".venv.Scripts.runxlrd",
+        "peekOfCode": "options = None\nif __name__ == \"__main__\":\n    import xlrd\n    import sys\n    import time\n    import glob\n    import traceback\n    import gc\n    from xlrd.timemachine import xrange, REPR\n    class LogHandler(object):",
+        "detail": ".venv.Scripts.runxlrd",
+        "documentation": {}
+    },
+    {
+        "label": "load_contacts",
+        "kind": 2,
+        "importPath": "DataScienceDay1.ContactBook",
+        "description": "DataScienceDay1.ContactBook",
+        "peekOfCode": "def load_contacts():\n    \"\"\"Reads contacts from CSV file at startup.\"\"\"\n    if os.path.exists(FILENAME):\n        try:\n            with open(FILENAME, mode='r', newline='') as file:\n                reader = csv.DictReader(file)\n                for row in reader:\n                    # Store phone and email inside another dictionary\n                    contacts[row['name']] = {\n                        \"phone\": row['phone'],",
+        "detail": "DataScienceDay1.ContactBook",
+        "documentation": {}
+    },
+    {
+        "label": "save_contacts",
+        "kind": 2,
+        "importPath": "DataScienceDay1.ContactBook",
+        "description": "DataScienceDay1.ContactBook",
+        "peekOfCode": "def save_contacts():\n    \"\"\"Writes the current dictionary to a CSV file.\"\"\"\n    try:\n        with open(FILENAME, mode='w', newline='') as file:\n            fieldnames = [\"name\", \"phone\", \"email\"]\n            writer = csv.DictWriter(file, fieldnames=fieldnames)\n            writer.writeheader()\n            # Prepare rows from the dictionary\n            for name, info in contacts.items():\n                writer.writerow({",
+        "detail": "DataScienceDay1.ContactBook",
+        "documentation": {}
+    },
+    {
+        "label": "add_contact",
+        "kind": 2,
+        "importPath": "DataScienceDay1.ContactBook",
+        "description": "DataScienceDay1.ContactBook",
+        "peekOfCode": "def add_contact():\n    name = input(\"Enter name: \").strip()\n    if name in contacts:\n        print(\"Contact already exists!\")\n        return\n    phone = input(\"Enter phone number: \")\n    email = input(\"Enter email address: \")\n    contacts[name] = {\"phone\": phone, \"email\": email}\n    print(f\"Contact '{name}' added!\")\ndef view_all():",
+        "detail": "DataScienceDay1.ContactBook",
+        "documentation": {}
+    },
+    {
+        "label": "view_all",
+        "kind": 2,
+        "importPath": "DataScienceDay1.ContactBook",
+        "description": "DataScienceDay1.ContactBook",
+        "peekOfCode": "def view_all():\n    if not contacts:\n        print(\"\\nNo contacts found.\")\n        return\n    print(\"\\n\" + \"-\"*40)\n    print(f\"{'Name':<15} | {'Phone':<12} | {'Email'}\")\n    print(\"-\"*40)\n    for name, info in contacts.items():\n        print(f\"{name:<15} | {info['phone']:<12} | {info['email']}\")\ndef search_contact():",
+        "detail": "DataScienceDay1.ContactBook",
+        "documentation": {}
+    },
+    {
+        "label": "search_contact",
+        "kind": 2,
+        "importPath": "DataScienceDay1.ContactBook",
+        "description": "DataScienceDay1.ContactBook",
+        "peekOfCode": "def search_contact():\n    name = input(\"Enter name to search: \")\n    if name in contacts:\n        info = contacts[name]\n        print(f\"\\nFound: {name}\")\n        print(f\"Phone: {info['phone']}\")\n        print(f\"Email: {info['email']}\")\n    else:\n        print(\"Contact not found.\")\ndef update_contact():",
+        "detail": "DataScienceDay1.ContactBook",
+        "documentation": {}
+    },
+    {
+        "label": "update_contact",
+        "kind": 2,
+        "importPath": "DataScienceDay1.ContactBook",
+        "description": "DataScienceDay1.ContactBook",
+        "peekOfCode": "def update_contact():\n    name = input(\"Enter name of contact to update: \")\n    if name in contacts:\n        print(\"Enter new details (leave blank to keep current):\")\n        new_phone = input(f\"New Phone [{contacts[name]['phone']}]: \")\n        new_email = input(f\"New Email [{contacts[name]['email']}]: \")\n        if new_phone: contacts[name]['phone'] = new_phone\n        if new_email: contacts[name]['email'] = new_email\n        print(\"Contact updated!\")\n    else:",
+        "detail": "DataScienceDay1.ContactBook",
+        "documentation": {}
+    },
+    {
+        "label": "delete_contact",
+        "kind": 2,
+        "importPath": "DataScienceDay1.ContactBook",
+        "description": "DataScienceDay1.ContactBook",
+        "peekOfCode": "def delete_contact():\n    name = input(\"Enter name to delete: \")\n    if name in contacts:\n        del contacts[name]\n        print(f\"Contact '{name}' deleted.\")\n    else:\n        print(\"Contact not found.\")\ndef main():\n    load_contacts()\n    while True:",
+        "detail": "DataScienceDay1.ContactBook",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "DataScienceDay1.ContactBook",
+        "description": "DataScienceDay1.ContactBook",
+        "peekOfCode": "def main():\n    load_contacts()\n    while True:\n        print(\"\\n\" + \"=\"*30)\n        print(\"      CONTACT BOOK\")\n        print(\"=\"*30)\n        print(\"1. Add Contact\")\n        print(\"2. View All Contacts\")\n        print(\"3. Search Contact\")\n        print(\"4. Update Contact\")",
+        "detail": "DataScienceDay1.ContactBook",
+        "documentation": {}
+    },
+    {
+        "label": "FILENAME",
+        "kind": 5,
+        "importPath": "DataScienceDay1.ContactBook",
+        "description": "DataScienceDay1.ContactBook",
+        "peekOfCode": "FILENAME = \"contacts.csv\"\n# We use a dictionary where 'name' is the key for fast searching\ncontacts = {}\ndef load_contacts():\n    \"\"\"Reads contacts from CSV file at startup.\"\"\"\n    if os.path.exists(FILENAME):\n        try:\n            with open(FILENAME, mode='r', newline='') as file:\n                reader = csv.DictReader(file)\n                for row in reader:",
+        "detail": "DataScienceDay1.ContactBook",
+        "documentation": {}
+    },
+    {
+        "label": "contacts",
+        "kind": 5,
+        "importPath": "DataScienceDay1.ContactBook",
+        "description": "DataScienceDay1.ContactBook",
+        "peekOfCode": "contacts = {}\ndef load_contacts():\n    \"\"\"Reads contacts from CSV file at startup.\"\"\"\n    if os.path.exists(FILENAME):\n        try:\n            with open(FILENAME, mode='r', newline='') as file:\n                reader = csv.DictReader(file)\n                for row in reader:\n                    # Store phone and email inside another dictionary\n                    contacts[row['name']] = {",
+        "detail": "DataScienceDay1.ContactBook",
+        "documentation": {}
+    },
+    {
+        "label": "read_and_analyze_csv",
+        "kind": 2,
+        "importPath": "DataScienceDay1.CSVReaderProject",
+        "description": "DataScienceDay1.CSVReaderProject",
+        "peekOfCode": "def read_and_analyze_csv(filename):\n    \"\"\"\n    Reads the CSV file, calculates stats, and measures the time taken.\n    \"\"\"\n    # 1. Start the timer to measure loading time\n    start_time = time.time()\n    marks_list = []\n    student_count = 0\n    try:\n        # 2. File handling: Open the CSV file",
+        "detail": "DataScienceDay1.CSVReaderProject",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "DataScienceDay1.CSVReaderProject",
+        "description": "DataScienceDay1.CSVReaderProject",
+        "peekOfCode": "def main():\n    # Define the filename\n    csv_file = \"students.csv\"\n    print(\"Initializing CSV Reader Project...\")\n    # Call the function to process the file\n    read_and_analyze_csv(csv_file)\n# Run the program\nif __name__ == \"__main__\":\n    main()",
+        "detail": "DataScienceDay1.CSVReaderProject",
+        "documentation": {}
+    },
+    {
+        "label": "get_grade",
+        "kind": 2,
+        "importPath": "DataScienceDay1.CSVStudentResultAnalyzer",
+        "description": "DataScienceDay1.CSVStudentResultAnalyzer",
+        "peekOfCode": "def get_grade(marks):\n    \"\"\"Assigns a grade based on marks.\"\"\"\n    if marks >= 90:\n        return \"A+\"\n    elif marks >= 80:\n        return \"A\"\n    elif marks >= 70:\n        return \"B\"\n    elif marks >= 60:\n        return \"C\"",
+        "detail": "DataScienceDay1.CSVStudentResultAnalyzer",
+        "documentation": {}
+    },
+    {
+        "label": "analyze_results",
+        "kind": 2,
+        "importPath": "DataScienceDay1.CSVStudentResultAnalyzer",
+        "description": "DataScienceDay1.CSVStudentResultAnalyzer",
+        "peekOfCode": "def analyze_results(filename):\n    \"\"\"Reads CSV, processes data, and displays results.\"\"\"\n    student_data = []\n    try:\n        # 1. Read the CSV file\n        with open(filename, mode='r', newline='') as file:\n            reader = csv.DictReader(file)\n            for row in reader:\n                # Convert marks to integer\n                row['marks'] = int(row['marks'])",
+        "detail": "DataScienceDay1.CSVStudentResultAnalyzer",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "DataScienceDay1.CSVStudentResultAnalyzer",
+        "description": "DataScienceDay1.CSVStudentResultAnalyzer",
+        "peekOfCode": "def main():\n    csv_filename = \"students.csv\"\n    print(\"Initializing Student Result Analyzer...\")\n    analyze_results(csv_filename)\nif __name__ == \"__main__\":\n    main()",
+        "detail": "DataScienceDay1.CSVStudentResultAnalyzer",
+        "documentation": {}
+    },
+    {
+        "label": "add_expense",
+        "kind": 2,
+        "importPath": "DataScienceDay1.ExpenseTracker",
+        "description": "DataScienceDay1.ExpenseTracker",
+        "peekOfCode": "def add_expense():\n    \"\"\"Asks user for expense details and adds to the list.\"\"\"\n    print(\"\\n--- Add New Expense ---\")\n    title = input(\"Enter expense title (e.g., Lunch): \")\n    try:\n        amount = float(input(\"Enter amount: \"))\n        category = input(\"Enter category (e.g., Food, Travel, Bills): \")\n        # Store as a dictionary\n        expense = {\n            \"title\": title,",
+        "detail": "DataScienceDay1.ExpenseTracker",
+        "documentation": {}
+    },
+    {
+        "label": "view_expenses",
+        "kind": 2,
+        "importPath": "DataScienceDay1.ExpenseTracker",
+        "description": "DataScienceDay1.ExpenseTracker",
+        "peekOfCode": "def view_expenses():\n    \"\"\"Displays all expenses currently in the list.\"\"\"\n    if not expenses:\n        print(\"\\nNo expenses found.\")\n        return\n    print(\"\\n--- All Expenses ---\")\n    print(f\"{'Title':<15} | {'Amount':<10} | {'Category':<15}\")\n    print(\"-\" * 45)\n    for exp in expenses:\n        print(f\"{exp['title']:<15} | ${exp['amount']:<9.2f} | {exp['category']:<15}\")",
+        "detail": "DataScienceDay1.ExpenseTracker",
+        "documentation": {}
+    },
+    {
+        "label": "show_total",
+        "kind": 2,
+        "importPath": "DataScienceDay1.ExpenseTracker",
+        "description": "DataScienceDay1.ExpenseTracker",
+        "peekOfCode": "def show_total():\n    \"\"\"Calculates and shows the sum of all expenses.\"\"\"\n    total = sum(exp['amount'] for exp in expenses)\n    print(f\"\\nTotal Spending: ${total:.2f}\")\ndef show_category_summary():\n    \"\"\"Groups expenses by category and shows totals for each.\"\"\"\n    if not expenses:\n        print(\"\\nNo expenses to categorize.\")\n        return\n    summary = {}",
+        "detail": "DataScienceDay1.ExpenseTracker",
+        "documentation": {}
+    },
+    {
+        "label": "show_category_summary",
+        "kind": 2,
+        "importPath": "DataScienceDay1.ExpenseTracker",
+        "description": "DataScienceDay1.ExpenseTracker",
+        "peekOfCode": "def show_category_summary():\n    \"\"\"Groups expenses by category and shows totals for each.\"\"\"\n    if not expenses:\n        print(\"\\nNo expenses to categorize.\")\n        return\n    summary = {}\n    for exp in expenses:\n        cat = exp['category']\n        summary[cat] = summary.get(cat, 0) + exp['amount']\n    print(\"\\n--- Category-wise Spending ---\")",
+        "detail": "DataScienceDay1.ExpenseTracker",
+        "documentation": {}
+    },
+    {
+        "label": "save_to_csv",
+        "kind": 2,
+        "importPath": "DataScienceDay1.ExpenseTracker",
+        "description": "DataScienceDay1.ExpenseTracker",
+        "peekOfCode": "def save_to_csv():\n    \"\"\"Saves the list of dictionaries into expenses.csv.\"\"\"\n    if not expenses:\n        print(\"\\nNothing to save.\")\n        return\n    filename = \"expenses.csv\"\n    try:\n        with open(filename, mode='w', newline='') as file:\n            fieldnames = [\"title\", \"amount\", \"category\"]\n            writer = csv.DictWriter(file, fieldnames=fieldnames)",
+        "detail": "DataScienceDay1.ExpenseTracker",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "DataScienceDay1.ExpenseTracker",
+        "description": "DataScienceDay1.ExpenseTracker",
+        "peekOfCode": "def main():\n    while True:\n        print(\"\\n\" + \"=\"*30)\n        print(\"      EXPENSE TRACKER\")\n        print(\"=\"*30)\n        print(\"1. Add Expense\")\n        print(\"2. View All Expenses\")\n        print(\"3. Show Total Expense\")\n        print(\"4. Show Category Summary\")\n        print(\"5. Save to CSV\")",
+        "detail": "DataScienceDay1.ExpenseTracker",
+        "documentation": {}
+    },
+    {
+        "label": "expenses",
+        "kind": 5,
+        "importPath": "DataScienceDay1.ExpenseTracker",
+        "description": "DataScienceDay1.ExpenseTracker",
+        "peekOfCode": "expenses = []\ndef add_expense():\n    \"\"\"Asks user for expense details and adds to the list.\"\"\"\n    print(\"\\n--- Add New Expense ---\")\n    title = input(\"Enter expense title (e.g., Lunch): \")\n    try:\n        amount = float(input(\"Enter amount: \"))\n        category = input(\"Enter category (e.g., Food, Travel, Bills): \")\n        # Store as a dictionary\n        expense = {",
+        "detail": "DataScienceDay1.ExpenseTracker",
+        "documentation": {}
+    },
+    {
+        "label": "play_game",
+        "kind": 2,
+        "importPath": "DataScienceDay1.NumberGuessingGame",
+        "description": "DataScienceDay1.NumberGuessingGame",
+        "peekOfCode": "def play_game():\n    \"\"\"\n    Main game logic for a single round of guessing.\n    \"\"\"\n    # 1. Computer selects a random number between 1 and 100\n    secret_number = random.randint(1, 100)\n    attempts = 0\n    guessed_correctly = False\n    print(\"\\nI have selected a number between 1 and 100.\")\n    print(\"Can you guess it?\")",
+        "detail": "DataScienceDay1.NumberGuessingGame",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "DataScienceDay1.NumberGuessingGame",
+        "description": "DataScienceDay1.NumberGuessingGame",
+        "peekOfCode": "def main():\n    print(\"=\"*30)\n    print(\"  NUMBER GUESSING GAME  \")\n    print(\"=\"*30)\n    while True:\n        play_game()\n        # 4. Ask user if they want to play again\n        play_again = input(\"\\nDo you want to play again? (yes/no): \").lower().strip()\n        if play_again != \"yes\" and play_again != \"y\":\n            print(\"Thanks for playing! Goodbye.\")",
+        "detail": "DataScienceDay1.NumberGuessingGame",
+        "documentation": {}
+    },
+    {
+        "label": "load_users",
+        "kind": 2,
+        "importPath": "DataScienceDay1.SimpleLoginSystem",
+        "description": "DataScienceDay1.SimpleLoginSystem",
+        "peekOfCode": "def load_users():\n    \"\"\"Loads existing users from the CSV file.\"\"\"\n    if os.path.exists(FILENAME):\n        try:\n            with open(FILENAME, mode='r', newline='') as file:\n                reader = csv.DictReader(file)\n                for row in reader:\n                    users[row['username']] = row['password']\n            print(\"User database loaded.\")\n        except Exception as e:",
+        "detail": "DataScienceDay1.SimpleLoginSystem",
+        "documentation": {}
+    },
+    {
+        "label": "save_users",
+        "kind": 2,
+        "importPath": "DataScienceDay1.SimpleLoginSystem",
+        "description": "DataScienceDay1.SimpleLoginSystem",
+        "peekOfCode": "def save_users():\n    \"\"\"Saves the current user dictionary to the CSV file.\"\"\"\n    try:\n        with open(FILENAME, mode='w', newline='') as file:\n            fieldnames = [\"username\", \"password\"]\n            writer = csv.DictWriter(file, fieldnames=fieldnames)\n            writer.writeheader()\n            for username, password in users.items():\n                writer.writerow({\"username\": username, \"password\": password})\n        print(\"User database saved.\")",
+        "detail": "DataScienceDay1.SimpleLoginSystem",
+        "documentation": {}
+    },
+    {
+        "label": "register",
+        "kind": 2,
+        "importPath": "DataScienceDay1.SimpleLoginSystem",
+        "description": "DataScienceDay1.SimpleLoginSystem",
+        "peekOfCode": "def register():\n    \"\"\"Handles new user registration.\"\"\"\n    print(\"\\n--- Register ---\")\n    username = input(\"Enter a new username: \").strip()\n    if not username:\n        print(\"Username cannot be empty!\")\n        return\n    # Check for duplicate usernames\n    if username in users:\n        print(\"Username already exists! Please try a different one.\")",
+        "detail": "DataScienceDay1.SimpleLoginSystem",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "kind": 2,
+        "importPath": "DataScienceDay1.SimpleLoginSystem",
+        "description": "DataScienceDay1.SimpleLoginSystem",
+        "peekOfCode": "def login():\n    \"\"\"Handles user login authentication.\"\"\"\n    print(\"\\n--- Login ---\")\n    username = input(\"Username: \")\n    password = input(\"Password: \")\n    # Check if username exists and password matches\n    if username in users and users[username] == password:\n        print(f\"Login successful! Welcome, {username}.\")\n    else:\n        print(\"Error: Invalid username or password.\")",
+        "detail": "DataScienceDay1.SimpleLoginSystem",
+        "documentation": {}
+    },
+    {
+        "label": "view_users",
+        "kind": 2,
+        "importPath": "DataScienceDay1.SimpleLoginSystem",
+        "description": "DataScienceDay1.SimpleLoginSystem",
+        "peekOfCode": "def view_users():\n    \"\"\"Displays a list of all registered usernames.\"\"\"\n    if not users:\n        print(\"\\nNo users registered yet.\")\n    else:\n        print(\"\\n--- Registered Usernames ---\")\n        for idx, username in enumerate(users.keys(), 1):\n            print(f\"{idx}. {username}\")\ndef main():\n    load_users()",
+        "detail": "DataScienceDay1.SimpleLoginSystem",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "DataScienceDay1.SimpleLoginSystem",
+        "description": "DataScienceDay1.SimpleLoginSystem",
+        "peekOfCode": "def main():\n    load_users()\n    while True:\n        print(\"\\n\" + \"=\"*30)\n        print(\"      LOGIN SYSTEM\")\n        print(\"=\"*30)\n        print(\"1. Register\")\n        print(\"2. Login\")\n        print(\"3. View Registered Users\")\n        print(\"4. Exit\")",
+        "detail": "DataScienceDay1.SimpleLoginSystem",
+        "documentation": {}
+    },
+    {
+        "label": "FILENAME",
+        "kind": 5,
+        "importPath": "DataScienceDay1.SimpleLoginSystem",
+        "description": "DataScienceDay1.SimpleLoginSystem",
+        "peekOfCode": "FILENAME = \"users.csv\"\n# Dictionary format: { username: password }\nusers = {}\ndef load_users():\n    \"\"\"Loads existing users from the CSV file.\"\"\"\n    if os.path.exists(FILENAME):\n        try:\n            with open(FILENAME, mode='r', newline='') as file:\n                reader = csv.DictReader(file)\n                for row in reader:",
+        "detail": "DataScienceDay1.SimpleLoginSystem",
+        "documentation": {}
+    },
+    {
+        "label": "users",
+        "kind": 5,
+        "importPath": "DataScienceDay1.SimpleLoginSystem",
+        "description": "DataScienceDay1.SimpleLoginSystem",
+        "peekOfCode": "users = {}\ndef load_users():\n    \"\"\"Loads existing users from the CSV file.\"\"\"\n    if os.path.exists(FILENAME):\n        try:\n            with open(FILENAME, mode='r', newline='') as file:\n                reader = csv.DictReader(file)\n                for row in reader:\n                    users[row['username']] = row['password']\n            print(\"User database loaded.\")",
+        "detail": "DataScienceDay1.SimpleLoginSystem",
+        "documentation": {}
+    },
+    {
+        "label": "calculate_grade",
+        "kind": 2,
+        "importPath": "DataScienceDay1.StudentResultCalculator",
+        "description": "DataScienceDay1.StudentResultCalculator",
+        "peekOfCode": "def calculate_grade(average):\n    \"\"\"\n    Function to determine the grade based on the average marks.\n    Uses if-elif-else conditions.\n    \"\"\"\n    if average >= 90:\n        return \"A+\"\n    elif average >= 80:\n        return \"A\"\n    elif average >= 70:",
+        "detail": "DataScienceDay1.StudentResultCalculator",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "DataScienceDay1.StudentResultCalculator",
+        "description": "DataScienceDay1.StudentResultCalculator",
+        "peekOfCode": "def main():\n    # 1. Ask for the student's name\n    print(\"Welcome to the Student Result Calculator!\")\n    student_name = input(\"Enter student name: \")\n    # 2. Initialize an empty list to store marks\n    marks = []\n    # 3. Ask for marks in 5 subjects using a loop\n    print(\"\\nPlease enter marks for 5 subjects (out of 100):\")\n    for i in range(1, 6):\n        while True:",
+        "detail": "DataScienceDay1.StudentResultCalculator",
+        "documentation": {}
+    },
+    {
+        "label": "load_tasks",
+        "kind": 2,
+        "importPath": "DataScienceDay1.ToDoListApp",
+        "description": "DataScienceDay1.ToDoListApp",
+        "peekOfCode": "def load_tasks():\n    # Heading of the funcation it tell us what the function is doing\n    \"\"\"Loads tasks from the CSV file into the tasks list.\"\"\"\n    # Checking the file is exists or not\n    if os.path.exists(FILENAME):\n        try:\n            # Opening the file in read mode\n            with open(FILENAME, mode=\"r\", newline=\"\") as file:\n                # Reading the file\n                reader = csv.DictReader(file)",
+        "detail": "DataScienceDay1.ToDoListApp",
+        "documentation": {}
+    },
+    {
+        "label": "save_tasks",
+        "kind": 2,
+        "importPath": "DataScienceDay1.ToDoListApp",
+        "description": "DataScienceDay1.ToDoListApp",
+        "peekOfCode": "def save_tasks():\n    # Heading of the funcation it tell us what the function is doing\n    \"\"\"Saves the current tasks list to the CSV file.\"\"\" \n    try:\n            # Checking the list is empty or not\n        if not tasks:\n            print(f\"Error: List is empty! {str(e)}\")\n            return\n            # Opening the file in write mode\n        with open(FILENAME, mode=\"w\", newline=\"\") as file:",
+        "detail": "DataScienceDay1.ToDoListApp",
+        "documentation": {}
+    },
+    {
+        "label": "add_task",
+        "kind": 2,
+        "importPath": "DataScienceDay1.ToDoListApp",
+        "description": "DataScienceDay1.ToDoListApp",
+        "peekOfCode": "def add_task():\n    # Heading of the funcation it tell us what the function is doing\n    \"\"\"Adds a new pending task.\"\"\"\n    name = input(\"Enter the task name: \")\n    # This condition is used to check the task name is empty or not \n    # if it is empty then it will show the error message and \n    # if it is not empty then it will add the task into the list with the status pending\n    # strip() method is used to remove the leading and trailing whitespace from the string \n    if name.strip():\n        tasks.append({\"name\": name, \"status\": \"pending\"})",
+        "detail": "DataScienceDay1.ToDoListApp",
+        "documentation": {}
+    },
+    {
+        "label": "view_tasks",
+        "kind": 2,
+        "importPath": "DataScienceDay1.ToDoListApp",
+        "description": "DataScienceDay1.ToDoListApp",
+        "peekOfCode": "def view_tasks():\n # Heading of the funcation it tell us what the function is doing\n    \"\"\"Displays all tasks with their index and status.\"\"\"\n    # This condition is used to check the list is empty or not \n    # if it is empty then it will show the message that the list is empty and \n    # if it is not empty then it will show the task with the index and status of the task\n    if not tasks:\n        # \\n is used to print the new line before the message\n        print(\"\\nYour to-do list is empty.\")\n        return",
+        "detail": "DataScienceDay1.ToDoListApp",
+        "documentation": {}
+    },
+    {
+        "label": "mark_complete",
+        "kind": 2,
+        "importPath": "DataScienceDay1.ToDoListApp",
+        "description": "DataScienceDay1.ToDoListApp",
+        "peekOfCode": "def mark_complete():\n    # Heading of the funcation it tell us what the function is doing\n    \"\"\"Changes a task status to completed based on index.\"\"\"\n    # This condition is used to check the list is empty or not \n    ## view_tasks() funcation is used to show the task with the index and status of the task and\n    view_tasks()\n    if not tasks:\n        return\n    # This try block is used to handle the exception \n    # if the user enters the invalid input and it will show the error message",
+        "detail": "DataScienceDay1.ToDoListApp",
+        "documentation": {}
+    },
+    {
+        "label": "delete_task",
+        "kind": 2,
+        "importPath": "DataScienceDay1.ToDoListApp",
+        "description": "DataScienceDay1.ToDoListApp",
+        "peekOfCode": "def delete_task():\n    # Heading of the funcation it tell us what the function is doing\n    \"\"\"Removes a task from the list based on index.\"\"\"\n    view_tasks()\n    if not tasks:\n        return\n    try:\n        choice = int(input(\"\\nEnter task number to delete: \"))\n       # This condition is used to check the choice is valid or not and \n       # if it is valid then it will remove the task from the list and ",
+        "detail": "DataScienceDay1.ToDoListApp",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "DataScienceDay1.ToDoListApp",
+        "description": "DataScienceDay1.ToDoListApp",
+        "peekOfCode": "def main():\n    # 1. Load data at startup\n    load_tasks()\n# 2. Main loop to show menu and handle user choices\n    while True:\n        print(\"\\n\" + \"=\" * 30)\n        print(\"      TO-DO LIST APP\")\n        print(\"=\" * 30)\n        print(\"1. Add Task\")\n        print(\"2. View Tasks\")",
+        "detail": "DataScienceDay1.ToDoListApp",
+        "documentation": {}
+    },
+    {
+        "label": "FILENAME",
+        "kind": 5,
+        "importPath": "DataScienceDay1.ToDoListApp",
+        "description": "DataScienceDay1.ToDoListApp",
+        "peekOfCode": "FILENAME = \"todo_list.csv\"  # Name of the file\ntasks = []  # List to store tasks\n# Load Funcation it is show the data into csv file\n# It will only read the data from the CSV file\n# if file is exists and it is stored in list\ndef load_tasks():\n    # Heading of the funcation it tell us what the function is doing\n    \"\"\"Loads tasks from the CSV file into the tasks list.\"\"\"\n    # Checking the file is exists or not\n    if os.path.exists(FILENAME):",
+        "detail": "DataScienceDay1.ToDoListApp",
+        "documentation": {}
+    },
+    {
+        "label": "tasks",
+        "kind": 5,
+        "importPath": "DataScienceDay1.ToDoListApp",
+        "description": "DataScienceDay1.ToDoListApp",
+        "peekOfCode": "tasks = []  # List to store tasks\n# Load Funcation it is show the data into csv file\n# It will only read the data from the CSV file\n# if file is exists and it is stored in list\ndef load_tasks():\n    # Heading of the funcation it tell us what the function is doing\n    \"\"\"Loads tasks from the CSV file into the tasks list.\"\"\"\n    # Checking the file is exists or not\n    if os.path.exists(FILENAME):\n        try:",
+        "detail": "DataScienceDay1.ToDoListApp",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "DataScienceDay2.student_loan_analyzer",
+        "description": "DataScienceDay2.student_loan_analyzer",
+        "peekOfCode": "df = pd.read_csv(\"student_loan_data.xls\")\n# -----------------------------\n# CLEAN COLUMN NAMES\n# -----------------------------\ndf.columns = (\n    df.columns\n    .str.strip()\n    .str.lower()\n    .str.replace(\" \", \"_\")\n    .str.replace(\"#\", \"num\")",
+        "detail": "DataScienceDay2.student_loan_analyzer",
+        "documentation": {}
+    },
+    {
+        "label": "df.columns",
+        "kind": 5,
+        "importPath": "DataScienceDay2.student_loan_analyzer",
+        "description": "DataScienceDay2.student_loan_analyzer",
+        "peekOfCode": "df.columns = (\n    df.columns\n    .str.strip()\n    .str.lower()\n    .str.replace(\" \", \"_\")\n    .str.replace(\"#\", \"num\")\n    .str.replace(\"$\", \"amount\")\n)\n# Example:\n# \"# of Loans Originated\" -> \"num_of_loans_originated\"",
+        "detail": "DataScienceDay2.student_loan_analyzer",
+        "documentation": {}
+    },
+    {
+        "label": "text_cols",
+        "kind": 5,
+        "importPath": "DataScienceDay2.student_loan_analyzer",
+        "description": "DataScienceDay2.student_loan_analyzer",
+        "peekOfCode": "text_cols = [\"school\", \"state\", \"school_type\"]\nfor col in text_cols:\n    if col in df.columns:\n        df[col] = df[col].str.strip()\n# -----------------------------\n# CONVERT NUMERIC COLUMNS\n# -----------------------------\nnumeric_cols = [\n    \"recipients\",\n    \"num_of_loans_originated\",",
+        "detail": "DataScienceDay2.student_loan_analyzer",
+        "documentation": {}
+    },
+    {
+        "label": "numeric_cols",
+        "kind": 5,
+        "importPath": "DataScienceDay2.student_loan_analyzer",
+        "description": "DataScienceDay2.student_loan_analyzer",
+        "peekOfCode": "numeric_cols = [\n    \"recipients\",\n    \"num_of_loans_originated\",\n    \"amount_of_loans_originated\",\n    \"num_of_loans_disbursed\",\n    \"amount_of_loans_disbursed\"\n]\nfor col in numeric_cols:\n    if col in df.columns:\n        df[col] = (",
+        "detail": "DataScienceDay2.student_loan_analyzer",
+        "documentation": {}
+    },
+    {
+        "label": "file_path",
+        "kind": 5,
+        "importPath": "DataScienceDay3.pandas_analysis",
+        "description": "DataScienceDay3.pandas_analysis",
+        "peekOfCode": "file_path = Path(\"DataScienceDay3/cleaned_student_loan_data.csv\")\ndf = pd.read_csv(file_path)\nprint(\"First 5 Rows:\")\nprint(df.head())\nprint(\"\\nRows and Columns:\")\nprint(df.shape)\nprint(\"\\nColumn Names:\")\nprint(df.columns.tolist())\nprint(\"\\nOPE ID Duplicate Check\")\nprint(\"-\" * 40)",
+        "detail": "DataScienceDay3.pandas_analysis",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "DataScienceDay3.pandas_analysis",
+        "description": "DataScienceDay3.pandas_analysis",
+        "peekOfCode": "df = pd.read_csv(file_path)\nprint(\"First 5 Rows:\")\nprint(df.head())\nprint(\"\\nRows and Columns:\")\nprint(df.shape)\nprint(\"\\nColumn Names:\")\nprint(df.columns.tolist())\nprint(\"\\nOPE ID Duplicate Check\")\nprint(\"-\" * 40)\nduplicate_ope_count = df[\"ope_id\"].duplicated().sum()",
+        "detail": "DataScienceDay3.pandas_analysis",
+        "documentation": {}
+    },
+    {
+        "label": "duplicate_ope_count",
+        "kind": 5,
+        "importPath": "DataScienceDay3.pandas_analysis",
+        "description": "DataScienceDay3.pandas_analysis",
+        "peekOfCode": "duplicate_ope_count = df[\"ope_id\"].duplicated().sum()\nprint(\"Duplicate OPE ID count:\", duplicate_ope_count)\nduplicate_ope_rows = df[df[\"ope_id\"].duplicated(keep=False)]\nprint(\"\\nDuplicate OPE ID Rows:\")\nprint(duplicate_ope_rows[[\"ope_id\", \"school\", \"state\", \"school_type\"]])\nprint(\"test\")",
+        "detail": "DataScienceDay3.pandas_analysis",
+        "documentation": {}
+    },
+    {
+        "label": "duplicate_ope_rows",
+        "kind": 5,
+        "importPath": "DataScienceDay3.pandas_analysis",
+        "description": "DataScienceDay3.pandas_analysis",
+        "peekOfCode": "duplicate_ope_rows = df[df[\"ope_id\"].duplicated(keep=False)]\nprint(\"\\nDuplicate OPE ID Rows:\")\nprint(duplicate_ope_rows[[\"ope_id\", \"school\", \"state\", \"school_type\"]])\nprint(\"test\")",
+        "detail": "DataScienceDay3.pandas_analysis",
+        "documentation": {}
+    },
+    {
+        "label": "start_time",
+        "kind": 5,
+        "importPath": "pythonCode.python",
+        "description": "pythonCode.python",
+        "peekOfCode": "start_time = time.time()\nwith open(\"data.csv\", \"r\") as file:\n    reader = csv.reader(file)\n    rows = list(reader)\nend_time = time.time()\ntotal_time = end_time - start_time\nprint(f\"Total rows read: {len(rows)}\")\nprint(f\"CSV read time: {total_time:.4f} seconds\")",
+        "detail": "pythonCode.python",
+        "documentation": {}
+    },
+    {
+        "label": "end_time",
+        "kind": 5,
+        "importPath": "pythonCode.python",
+        "description": "pythonCode.python",
+        "peekOfCode": "end_time = time.time()\ntotal_time = end_time - start_time\nprint(f\"Total rows read: {len(rows)}\")\nprint(f\"CSV read time: {total_time:.4f} seconds\")",
+        "detail": "pythonCode.python",
+        "documentation": {}
+    },
+    {
+        "label": "total_time",
+        "kind": 5,
+        "importPath": "pythonCode.python",
+        "description": "pythonCode.python",
+        "peekOfCode": "total_time = end_time - start_time\nprint(f\"Total rows read: {len(rows)}\")\nprint(f\"CSV read time: {total_time:.4f} seconds\")",
+        "detail": "pythonCode.python",
+        "documentation": {}
+    },
+    {
+        "label": "data",
+        "kind": 5,
+        "importPath": "pythonCode.pythonReadCsv",
+        "description": "pythonCode.pythonReadCsv",
+        "peekOfCode": "data = pd.read_csv(\"DataScienceDay3/cleaned_student_loan_data.csv\")\ndata = data.head(10)\nprint(data.to_string())",
+        "detail": "pythonCode.pythonReadCsv",
+        "documentation": {}
+    },
+    {
+        "label": "data",
+        "kind": 5,
+        "importPath": "pythonCode.pythonReadCsv",
+        "description": "pythonCode.pythonReadCsv",
+        "peekOfCode": "data = data.head(10)\nprint(data.to_string())",
+        "detail": "pythonCode.pythonReadCsv",
+        "documentation": {}
+    }
+]

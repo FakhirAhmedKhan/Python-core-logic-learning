@@ -198,7 +198,7 @@ df = df.rename(columns={
 ## 17. Save Cleaned File
 
 ```python
-df.to_csv("cleaned_student_loan_data.csv", index=False)
+df.to_csv("data.csv", index=False)
 ```
 
 ## Day 3 Practice Project
@@ -277,7 +277,7 @@ print(df.columns.tolist())
 print("\nMissing Values:")
 print(df.isnull().sum())
 
-df.to_csv("DataScienceDay2/cleaned_student_loan_data.csv", index=False)
+df.to_csv("DataScienceDay2/data.csv", index=False)
 
 print("\nCleaned file saved successfully.")
 ```

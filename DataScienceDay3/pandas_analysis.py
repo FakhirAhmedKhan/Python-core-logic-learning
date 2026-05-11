@@ -1,43 +1,9 @@
 import pandas as pd
 from pathlib import Path
 
-file_path = Path("DataScienceDay3/student_loan_data.xls")
+file_path = Path("DataScienceDay3/data.csv")
 
-df = pd.read_excel(file_path, engine="xlrd", header=4)
-
-df = df.iloc[1:].reset_index(drop=True)
-
-df.columns = [
-    "ope_id",
-    "school",
-    "state",
-    "zip_code",
-    "school_type",
-
-    "subsidized_recipients",
-    "subsidized_loans_originated_count",
-    "subsidized_loans_originated_amount",
-    "subsidized_disbursements_count",
-    "subsidized_disbursements_amount",
-
-    "unsubsidized_recipients",
-    "unsubsidized_loans_originated_count",
-    "unsubsidized_loans_originated_amount",
-    "unsubsidized_disbursements_count",
-    "unsubsidized_disbursements_amount",
-
-    "parent_plus_recipients",
-    "parent_plus_loans_originated_count",
-    "parent_plus_loans_originated_amount",
-    "parent_plus_disbursements_count",
-    "parent_plus_disbursements_amount",
-
-    "grad_plus_recipients",
-    "grad_plus_loans_originated_count",
-    "grad_plus_loans_originated_amount",
-    "grad_plus_disbursements_count",
-    "grad_plus_disbursements_amount",
-]
+df = pd.read_csv(file_path)
 
 print("First 5 Rows:")
 print(df.head())
@@ -48,9 +14,15 @@ print(df.shape)
 print("\nColumn Names:")
 print(df.columns.tolist())
 
-print("\nMissing Values:")
-print(df.isnull().sum())
+print("\nOPE ID Duplicate Check")
+print("-" * 40)
 
-df.to_csv("DataScienceDay2/cleaned_student_loan_data.csv", index=False)
+duplicate_ope_count = df["ope_id"].duplicated().sum()
+print("Duplicate OPE ID count:", duplicate_ope_count)
 
-print("\nCleaned file saved successfully.")
+duplicate_ope_rows = df[df["ope_id"].duplicated(keep=False)]
+
+print("\nDuplicate OPE ID Rows:")
+print(duplicate_ope_rows[["ope_id", "school", "state", "school_type"]])
+
+print("test")
