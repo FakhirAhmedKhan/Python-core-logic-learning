@@ -1,50 +1,161 @@
-import matplotlib.pyplot as plt
-import pandas as pd
 import os
+from pathlib import Path
 
-# Define absolute file path
-file_path = r'c:\Users\Dell\OneDrive\Desktop\Programs\Python-core-logic-learning\DataScienceDay3\data.csv'
+import pandas as pd
+import matplotlib.pyplot as plt
 
-# Check if file exists
-if not os.path.exists(file_path):
-    print(f"Error: {file_path} not found.")
+
+# =========================
+# File Paths
+# =========================
+
+BASE_DIR = Path(__file__).resolve().parent
+
+file_path = BASE_DIR / "data.csv"
+output_image = BASE_DIR / "school_analysis.png"
+
+if not file_path.exists():
+    print(f"Error: File not found: {file_path}")
     exit(1)
 
-# Read the data
+
+# =========================
+# Read Data
+# =========================
+
 df = pd.read_csv(file_path)
 
-# Set a modern style
-plt.style.use('ggplot') 
+# Basic validation
+required_columns = ["state", "school_type"]
 
-# Create a figure with two subplots
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 7))
+for column in required_columns:
+    if column not in df.columns:
+        print(f"Error: Missing required column: {column}")
+        exit(1)
 
-# Plot 1: Top 10 States by School Count
-state_counts = df['state'].value_counts().head(10)
-state_counts.plot(kind='bar', ax=ax1, color='#3498db', edgecolor='black')
-ax1.set_title('Top 10 States by School Count', fontsize=14, fontweight='bold', pad=15)
-ax1.set_xlabel('State', fontsize=12)
-ax1.set_ylabel('Number of Schools', fontsize=12)
-ax1.tick_params(axis='x', rotation=0)
-ax1.grid(axis='y', linestyle='--', alpha=0.7)
 
-# Plot 2: Distribution of School Types
-type_counts = df['school_type'].value_counts()
-colors = ['#e74c3c', '#2ecc71', '#f1c40f', '#9b59b6']
-type_counts.plot(kind='pie', ax=ax2, autopct='%1.1f%%', startangle=140, 
-                colors=colors, wedgeprops={'edgecolor': 'white', 'linewidth': 2},
-                textprops={'fontsize': 12})
-ax2.set_title('Distribution of School Types', fontsize=14, fontweight='bold', pad=15)
-ax2.set_ylabel('') # Remove y-label for pie chart
+# =========================
+# Prepare Data
+# =========================
 
-# Overall Layout
-plt.suptitle('US School Dataset Analysis', fontsize=18, fontweight='bold', y=1.02)
-plt.tight_layout()
+state_counts = df["state"].value_counts().head(10)
+school_type_counts = df["school_type"].value_counts().sort_values()
 
-# Save the figure to the artifacts directory so I can show it
-output_image = r'c:\Users\Dell\OneDrive\Desktop\Programs\Python-core-logic-learning\DataScienceDay3\school_analysis.png'
-plt.savefig(output_image, dpi=300, bbox_inches='tight')
-print(f"Chart saved to: {output_image}")
 
-# Show the plot
+# =========================
+# Chart Design
+# =========================
+
+plt.style.use("seaborn-v0_8-whitegrid")
+
+fig, axes = plt.subplots(1, 2, figsize=(18, 8))
+fig.patch.set_facecolor("#f8fafc")
+
+ax1, ax2 = axes
+
+
+# =========================
+# Plot 1: Top 10 States
+# =========================
+
+bars1 = ax1.bar(
+    state_counts.index,
+    state_counts.values,
+    color="#2563eb",
+    edgecolor="#1e3a8a",
+    linewidth=1.2
+)
+
+ax1.set_title(
+    "Top 10 States by School Count",
+    fontsize=16,
+    fontweight="bold",
+    pad=20
+)
+
+ax1.set_xlabel("State", fontsize=12, fontweight="bold")
+ax1.set_ylabel("Number of Schools", fontsize=12, fontweight="bold")
+ax1.tick_params(axis="x", rotation=35)
+ax1.grid(axis="y", linestyle="--", alpha=0.4)
+
+# Add value labels
+for bar in bars1:
+    height = bar.get_height()
+    ax1.text(
+        bar.get_x() + bar.get_width() / 2,
+        height + 5,
+        int(height),
+        ha="center",
+        va="bottom",
+        fontsize=10,
+        fontweight="bold"
+    )
+
+
+# =========================
+# Plot 2: School Type Distribution
+# =========================
+
+bars2 = ax2.barh(
+    school_type_counts.index,
+    school_type_counts.values,
+    color="#16a34a",
+    edgecolor="#14532d",
+    linewidth=1.2
+)
+
+ax2.set_title(
+    "School Type Distribution",
+    fontsize=16,
+    fontweight="bold",
+    pad=20
+)
+
+ax2.set_xlabel("Number of Schools", fontsize=12, fontweight="bold")
+ax2.set_ylabel("School Type", fontsize=12, fontweight="bold")
+ax2.grid(axis="x", linestyle="--", alpha=0.4)
+
+# Add value labels
+for bar in bars2:
+    width = bar.get_width()
+    ax2.text(
+        width + 5,
+        bar.get_y() + bar.get_height() / 2,
+        int(width),
+        va="center",
+        fontsize=10,
+        fontweight="bold"
+    )
+
+
+# =========================
+# Main Title and Footer
+# =========================
+
+fig.suptitle(
+    "Student Loan Dataset Analysis",
+    fontsize=22,
+    fontweight="bold",
+    y=1.03
+)
+
+fig.text(
+    0.5,
+    0.01,
+    "Day 6: Exploratory Data Analysis using Pandas and Matplotlib",
+    ha="center",
+    fontsize=12,
+    color="#334155"
+)
+
+
+# =========================
+# Save and Show
+# =========================
+
+plt.tight_layout(rect=[0, 0.04, 1, 0.95])
+
+plt.savefig(output_image, dpi=300, bbox_inches="tight")
+print(f"Chart saved successfully: {output_image}")
+
 plt.show()
