@@ -524,7 +524,11 @@
         "kind": 5,
         "importPath": "DataScienceDay3.pandas_analysis",
         "description": "DataScienceDay3.pandas_analysis",
+<<<<<<< HEAD
         "peekOfCode": "duplicate_ope_count = df[\"ope_id\"].duplicated().sum()\nprint(\"Duplicate OPE ID count:\", duplicate_ope_count)\nduplicate_ope_rows = df[df[\"ope_id\"].duplicated(keep=False)]\nprint(\"\\nDuplicate OPE ID Rows:\")\nprint(duplicate_ope_rows[[\"ope_id\", \"school\", \"state\", \"school_type\"]])\nprint(\"test\")",
+=======
+        "peekOfCode": "duplicate_ope_count = df[\"ope_id\"].duplicated().sum()\nprint(\"Duplicate OPE ID count:\", duplicate_ope_count)\nduplicate_ope_rows = df[df[\"ope_id\"].duplicated(keep=False)]\nprint(\"\\nDuplicate OPE ID Rows:\")\nprint(duplicate_ope_rows[[\"ope_id\", \"school\", \"state\", \"school_type\"]])",
+>>>>>>> b816be63cf4526c1ae2e270e1859b9a9577762ca
         "detail": "DataScienceDay3.pandas_analysis",
         "documentation": {}
     },
@@ -533,7 +537,11 @@
         "kind": 5,
         "importPath": "DataScienceDay3.pandas_analysis",
         "description": "DataScienceDay3.pandas_analysis",
+<<<<<<< HEAD
         "peekOfCode": "duplicate_ope_rows = df[df[\"ope_id\"].duplicated(keep=False)]\nprint(\"\\nDuplicate OPE ID Rows:\")\nprint(duplicate_ope_rows[[\"ope_id\", \"school\", \"state\", \"school_type\"]])\nprint(\"test\")",
+=======
+        "peekOfCode": "duplicate_ope_rows = df[df[\"ope_id\"].duplicated(keep=False)]\nprint(\"\\nDuplicate OPE ID Rows:\")\nprint(duplicate_ope_rows[[\"ope_id\", \"school\", \"state\", \"school_type\"]])",
+>>>>>>> b816be63cf4526c1ae2e270e1859b9a9577762ca
         "detail": "DataScienceDay3.pandas_analysis",
         "documentation": {}
     },
@@ -563,6 +571,7 @@
         "peekOfCode": "total_time = end_time - start_time\nprint(f\"Total rows read: {len(rows)}\")\nprint(f\"CSV read time: {total_time:.4f} seconds\")",
         "detail": "pythonCode.python",
         "documentation": {}
+<<<<<<< HEAD
     },
     {
         "label": "data",
@@ -581,5 +590,7 @@
         "peekOfCode": "data = data.head(10)\nprint(data.to_string())",
         "detail": "pythonCode.pythonReadCsv",
         "documentation": {}
+=======
+>>>>>>> b816be63cf4526c1ae2e270e1859b9a9577762ca
     }
 ]
